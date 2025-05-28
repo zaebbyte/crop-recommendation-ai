@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Predictor</title>
+    <style>
+        body {
+            background-color: #edf3e7;
+            font-family: 'Segoe UI', sans-serif;
+            color: #2e4639;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+        }
+        h2 {
+            color: #3a5a40;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #8aa899;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #6c8d7d;
+        }
+        .result {
+            margin-top: 20px;
+            background: #e0f0dc;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>🌾 Crop Recommendation System</h2>
+    <form action="/predict" method="post">
+        <label>Soil Type (as number):</label>
+        <input type="text" name="soil_type" required>
+
+        <label>State (as number):</label>
+        <input type="text" name="state" required>
+
+        <label>Season (as number):</label>
+        <input type="text" name="season" required>
+
+        <label>Rainfall (mm):</label>
+        <input type="text" name="rainfall" required>
+
+        <label>Ground Water (m):</label>
+        <input type="text" name="ground_water" required>
+
+        <label>Temperature (°C):</label>
+        <input type="text" name="temperature" required>
+
+        <button type="submit">Predict Crop</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
